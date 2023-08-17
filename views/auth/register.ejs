@@ -1,0 +1,33 @@
+<%- include('../includes/header') %>
+
+<section class="form-section flex-column">
+
+  <form class="form mt-5" action="/register" method="POST">
+    <div class="form-titles  text-center">
+      <h2>Log In to Your Account</h2>
+      <h4>Or <a href="/register">Register</a> and Get Started!</h4>
+    </div>
+    <div class="col-lg-7  m-auto">
+      
+      
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" value="<%= oldInput.name %>" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" value="<%= oldInput.email %>"  placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password"  value="<%= oldInput.password %>" placeholder="Password">
+        </div>
+      
+        <div class="form-group text-center">
+          <input type="submit" class="btn btn-primary py-3 px-5" value="Register">
+          <div class="btn">
+            <a href="/reset">Reset Password</a>
+          </div>
+        </div>
+ 
+    </div>
+  </form>
+</section>
+<%- include('../includes/footer') %>
