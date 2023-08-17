@@ -1412,3 +1412,13 @@ h5,
   font-size: 13px;
   opacity: 0.6;
 }
+
+@media (max-width: 575px) {
+  .landing-title {
+    padding: 0 4rem;
+    font-size: 1.2rem;
+  }
+  .landing-p {
+    padding: 0 4rem;
+  }
+}
