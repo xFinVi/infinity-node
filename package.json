@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
-    "start-server": "node app.js"
+    "start-server": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "mongoose": "^7.4.3",
+    "nodemon": "^3.0.1",
     "sendgrid": "^5.2.3"
   }
 }
