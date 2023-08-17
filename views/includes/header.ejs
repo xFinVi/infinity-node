@@ -54,11 +54,13 @@
                     <li class="<%= path === '/contact' ? 'active' : '' %>"><a href="/contact" class="nav-link">Contact</a></li>
                     <li class="<%= path === '/login' ? 'active' : '' %>"><a href="/login" class="nav-link">Login</a></li>
                     <li class="<%= path === '/register' ? 'active' : '' %>"><a href="/register" class="nav-link">Register</a></li>
+                    <% if (isAuthenticated) { %>
                     <li>
                       <form action="/logout" method="post">
                       <input type="hidden" name="_csrf" value="">
                       <button type="submit" class="nav-link">LOGOUT</button>
                    </li>
+                   <%}%>
                   </ul>
                 </nav>
     

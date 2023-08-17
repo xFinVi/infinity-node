@@ -13,11 +13,11 @@ exports.getLogin = (req, res, next) => {
     } else {
         message = null;
     }  
-    
          res.render("auth/login", {
             pageTitle: "Login",
             path: "/login",
             errorsMessage: message,
+            isAuthenticated: false,
             oldInput: {
               email: '',
               name: '',
@@ -43,6 +43,7 @@ exports.getRegister = (req, res, next) => {
             pageTitle: "Register",
             path: "/register",
             errorsMessage: message,
+            isAuthenticated: false,
             oldInput: {
               email: '',
               name: '',
@@ -84,6 +85,7 @@ exports.postRegister = (req, res, next) => {
             pageTitle: "Register",
             path: "/register",
             errorsMessage: errors.array()[0].msg,
+            isAuthenticated: false,
             oldInput: {
                 email: email,
                 name: name,
