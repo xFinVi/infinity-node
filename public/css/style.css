@@ -1137,9 +1137,9 @@ h5,
   border: none;
   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
   overflow: hidden;
-  border-radius: 20px;
+
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-  background-color: #f8f9fa;
+  background-color: #1a191972;
 }
 
 
@@ -1150,11 +1150,11 @@ h5,
   background-position: center center;
 }
 .card-footer {
-  color: #000;
+  color: #d5d5d5;
 }
 
 .card-footer h4, h6 {
-  color: #000;
+  color: #d5d5d5;
 }
 .p-card img {
   filter: brightness(1.1) contrast(1.2) grayscale(0.1);
