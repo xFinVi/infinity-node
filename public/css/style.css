@@ -1331,9 +1331,9 @@ h5,
 
 @media (max-width: 490px) {
   .lead {
-    font-size: .75rem;
+    font-size: .9rem;
     margin: 0 1rem;
-    padding: 0 1rem;
+  
     overflow-wrap: wrap;
   }
 }
