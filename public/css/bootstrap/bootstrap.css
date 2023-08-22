@@ -143,9 +143,11 @@ a {
   color: #8bc34a;
   text-decoration: none;
   background-color: transparent;
-  -webkit-text-decoration-skip: objects; }
+  -webkit-text-decoration-skip: objects;
+  transition: all 1s; }
+
   a:hover {
-    font-size: 2rem;
+    border-bottom: 1px solid #c8cbcf;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -735,8 +737,8 @@ pre {
   .col-sm-4 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%; }
+    flex: 0 0 30%;
+    max-width: 33%; }
   .col-sm-5 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 41.66667%;
@@ -894,8 +896,8 @@ pre {
   .col-md-4 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%; }
+    flex: 0 0 30%;
+    max-width: 33%; }
   .col-md-5 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 41.66667%;
@@ -1054,7 +1056,7 @@ pre {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
     flex: 0 0 33.33333%;
-    max-width: 33.33333%; }
+    max-width: 33%; }
   .col-lg-5 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 41.66667%;

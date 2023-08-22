@@ -1,0 +1,31 @@
+<%- include('./includes/header') %>
+
+    <div class="container">
+        <div class="container text-center">
+
+            <h1 class="text-white">
+                <%=news.title%>
+            </h1>
+            <p><span>
+                    <%= new Date().toLocaleDateString() %>
+                </span> <span class="mx-3">&bullet;</span> </p>
+        </div>
+        
+         
+    
+                <div class="col-md-8">
+                    <img src="<%=news.image%>" alt="<%=news.title%>" class="img-fluid w-50">
+                    <p class="lead">
+                        <%=news.description%>
+                    </p>
+    
+    
+            </div>
+    
+
+    </div>
+
+
+    
+
+    <%- include('./includes/footer') %>

@@ -12,44 +12,40 @@
       </div>
     </div>
 
+    <div class="col-6 title-section w-100 d-flex justify-content-center m-auto ">
+      <h2 class="heading mt-5">Latest News</h2>
+    </div>
     
-    
-    <div class="container site-section">
-      <div class="row justify-content-center">
-        <div class="col-6 title-section">
-          <h2 class="heading">Latest News</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-       
-        <div class="col-lg-4 mb-4 ">
-          <div class="custom-media d-block p-5 d-flex flex-column align-items-center">
-            <div class="img mb-4">
-              <a href="/news/newsid"><img src="images/infinity/nightgame.jpg" alt="Image" class="img-fluid w-100"></a>
+    <div class="container">
+      <div class="row w-100 m-0 justify-content-center gap-5">
+       <% posts.forEach(post => {%>
+        <div class="col-lg-3 col-md-4 col-sm-12 p-0">
+          <div class="custom-media d-flex flex-column align-items-center">
+            <div class="img mb-4" style="background-image: url(<%=post.image%>);">
+              <a href="/news/<%=post._id%>"></a>
             </div>
             <div class="text">
-              <span class="meta">May 20, 2020</span>
-              <h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
-              <p><a href="/news/id">Read more</a></p>
+              <span class="meta"><%= new Date().toLocaleDateString() %></span>  
+              <p><%=post.description.substr(0,50)%> <a href="/news/<%=post._id%>" class="read-more" >Read more</a></p>
+              <div class="links">         
+
+              <% if(isAuthenticated && isAdmin) {%>
+                <form action="/delete" class="delete d-flex justify-content-end" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <input type="hidden" value="<%= post._id %>" name="postId">
+                  <a href="admin/edit-post/<%=post._id%>?edit=true" class="edit-icon"><ion-icon name="create"></ion-icon></a>
+                  <button type="submit" class="delete-icon"><ion-icon name="trash" ></ion-icon></button>
+                </form>
+              <%}%>
+              </div>
+              
             </div>
           </div>
         </div>
+      <% })%>
 
  
       </div>
-
-     <!--  <div class="row justify-content-center">
-        <div class="col-lg-7 text-center">
-          <div class="custom-pagination">
-            <a href="#">1</a>            
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-          </div>
-        </div>
-      </div> -->
     </div>
 
 

@@ -1,0 +1,31 @@
+<%- include('./includes/header') %>
+
+    <div class="container mt-5 mb-3">
+        <div class="container text-center">
+
+            
+            <h2> CLUB NEWS </h2>
+                 <small> <%= new Date().toLocaleDateString() %></small>  
+                
+        </div>
+        
+          
+    
+                <div class="col-md-12 col-xsm-8 d-flex flex-column justify-content-center align-items-center">
+                    <img src="<%=post.image%>" alt="<%=post.title%>" class="img-fluid w-50 mb-5">
+                    <h4><%=post.title %></h4>
+                    <p class="lead">
+                        <%=post.description%>
+                    </p>
+    
+    
+            </div>
+    
+     
+
+    </div>
+
+
+    
+
+    <%- include('./includes/footer') %>

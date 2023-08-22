@@ -1,30 +1,29 @@
 <%- include('../includes/header') %>
 
 <section class="form-section flex-column">
-
+  <%if (errorMessage) { %>
+<div> <%=errorMessage %></div>
+<%}%>
   <form class="form mt-5" action="/login" method="POST">
     <div class="form-titles mr-5 ml-5 text-center">
       <h2>Log In to Your Account</h2>
       <h4>Or <a href="/register">Register</a> and Get Started!</h4>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-6  p-2  m-auto">
-      
-   
-       
+    <div class="col-lg-4 col-md-4 col-sm-6  p-2  m-auto">      
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Email">
+          <input type="text" class="form-control" placeholder="Email" name="email">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Enter your password">
+          <input type="password" class="form-control" name="password" placeholder="Enter your password">
         </div>
         
         <div class="form-group text-center">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <input type="submit" class="btn btn-primary py-3 px-5" value="Login">
           <div class="btn">
             <a href="/reset">Forgot Password</a>
           </div>
         </div>
-     
     </div>
   </form>
 </section>

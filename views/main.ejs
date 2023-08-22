@@ -1,170 +1,114 @@
 <%- include('./includes/header') %>
 
-      <div 
-        class="hero overlay"
-        style="background-image: url('/images/infinity/gamephotos1.jpg')"
-      >
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-5 ml-auto">
-              <h2 class="text-white landing-title">
-                WELCOME TO THE OFFICIAL WEB PAGE OF INFINITY FC
-              </h2>
-              <p class="landing-p">
-                Lorem ipsum dolor sit amet,ipisicing elit.
-                Soluta, ariatur.
-              </p>
+  <div class="hero overlay" style="background-image: url('/images/infinity/gamephotos1.jpg')">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 ml-auto">
+          <h2 class="text-white landing-title">
+            WELCOME TO THE OFFICIAL WEB PAGE OF INFINITY FC
+          </h2>
+          <p class="landing-p">
+            Lorem ipsum dolor sit amet,ipisicing elit.
+            Soluta, ariatur.
+          </p>
 
-              <p class="landing-p"> 
-                <a href="#" class="btn btn-primary py-3 px-4 mr-3"
-                  >Next Fixture</a
-                >
-                <a href="#news" class="more light">News</a>
-              </p>
+          <p class="landing-p">
+            <a href="#" class="btn btn-primary py-3 px-4 mr-3">Next Fixture</a>
+            <a href="#news" class="more light">News</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="container p-3">
+    <div class="row justify-content-center align-items-center m-auto">
+      <div class="col-lg-6 col-sm-12 w-100 p-0 bg-dark">
+        <div class="widget-next-match w-100">
+          <div class="widget-title">
+            <h3>Last Game</h3>
+          </div>
+          <div class="widget-body mb-3 w-100">
+            <div class="widget-vs">
+              <div class="d-flex align-items-center justify-content-between w-100 p-2">
+                <div class="team-1 text-center flex-fill">
+
+                  <h3>TWITTER TEAM </h3>
+                </div>
+                <div>
+                  <span class="vs  flex-fill"><span>4-0</span></span>
+                </div>
+                <div class="team-2 text-center  flex-fill">
+
+                  <h3>TWITTER TEAM 2</h3>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="text-center widget-vs-contents mb-4">
+            <h4>SAT 19 AUG 2023</h4>
+            <p class="mb-5">
+              <span class="d-block">Hampshire League</span>
+
+
+            </p>
           </div>
         </div>
       </div>
 
-      
+    </div>
+  </div>
 
-        
-  
-      <div class="container p-3">
-        <div class="row  justify-content-center align-items-center m-auto bg-dark" >
-            <div class="col-lg-6 col-sm-12 w-100 p-0">
-              <div class="widget-next-match w-100">
-                <div class="widget-title">
-                  <h3>Last Game</h3>
-                </div>
-                <div class="widget-body mb-3 w-100">
-                  <div class="widget-vs">
-                    <div
-                      class="d-flex align-items-center justify-content-between w-100 p-2"
-                    >
-                      <div class="team-1 text-center flex-fill">
-                       
-                        <h3>TWITTER TEAM </h3>
-                      </div>
-                      <div>
-                        <span class="vs  flex-fill"><span>4-0</span></span>
-                      </div>
-                      <div class="team-2 text-center  flex-fill">
-                        
-                        <h3>TWITTER TEAM 2</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="text-center widget-vs-contents mb-4">
-                  <h4>SAT 19 AUG 2023</h4>
-                  <p class="mb-5">
-                    <span class="d-block">Hampshire League</span>
-      
-                
-                  </p>
-                </div>
-              </div>
-            </div>
-          
+  <div class="latest-news" id="news">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 title-section">
+          <h2 class="heading">Latest News</h2>
         </div>
-      </div> 
-
- <%- include('./includes/news-section') %>
-
-      <div class="twitter-container">
-        <a class="twitter-timeline" data-lang="en"  data-theme="light" href="https://twitter.com/Infinity_f_c?ref_src=twsrc%5Etfw">Tweets by Infinity_f_c</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
+      <div class="row justify-content-between">
 
-      <div class="container site-section">
-        
-          <div class="title-section d-flex justify-content-center">
-            <h2 class="heading">Our Sponsors</h2>
+        <% posts.forEach(post=> {%>
+
+          <div class="col-lg-4 col-md-6 ">
+
+            <div class="post-entry">
+              <img src="<%= post.image %>" alt="Image" />
+            </div>
+
+            
+              <div class="caption p-3 text-center">            
+                  <a href="/latest-news/<%=post._id %>">
+                    <h3 class="mb-2"><%=post.title%></h3>
+                  </a>     
+                  <small><%= new Date().toLocaleDateString() %></small>          
+              </div>
+
+           
+
           </div>
-        
-        <div
-          id="carouselExampleIndicators"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <ol class="carousel-indicators">
-            <li
-              data-target="#carouselExampleIndicators"
-              data-slide-to="0"
-              class="active"
-            ></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-          
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                class="d-block w-75 m-auto"
-                src="images/infinity/gaffa.jpg"
-                alt="First slide"
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Lorem ipsum dolor sit amet.</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione facere iure cumque, nobis quidem dolores!
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                class="d-block w-75 m-auto"
-                src="images/infinity/gamephotos1.jpg"
-                alt="Second slide"
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Lorem ipsum dolor sit amet.</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Commodi voluptas eligendi quaerat, incidunt obcaecati
-                  asperiores!
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                class="d-block w-75 m-auto"
-                src="images/infinity/managerTeam.jpg"
-                alt="Third slide"
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Lorem ipsum dolor sit amet.</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tenetur magnam ipsa sapiente cum nisi reiciendis?
-                </p>
-              </div>
-            </div>
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+
+
+          <% } ) %>
 
       </div>
+    </div>
+  </div>
 
-<%- include('./includes/footer') %>
+  <div class="twitter-container">
+    <a class="twitter-timeline" data-lang="en" href="https://twitter.com/Infinity_f_c?ref_src=twsrc%5Etfw">Tweets by
+      Infinity_f_c</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+
+
+<%- include('./includes/sponsors') %>
+
+
+  <%- include('./includes/footer') %>
