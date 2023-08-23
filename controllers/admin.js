@@ -1,9 +1,9 @@
 const Post = require("../models/post");
 const { validationResult } = require("express-validator");
-/* const fileHelper = require("../util/file"); */
+const fileHelper = require("../util/file");
 
 exports.getAddPost = (req, res, next) => {
-  const user = req.session.user;
+  const user = req.user;
 
   if (!user) {
     // Handle the case where user is not authenticated or not available
@@ -20,13 +20,48 @@ exports.getAddPost = (req, res, next) => {
 };
 
 exports.postNewPost = (req, res, next) => {
-  const { title, photo, description } = req.body;
+const title = req.body.title;
+const photo = req.file;
+const description = req.body.description;
+console.log(photo)
 
+  if(!photo) {
+    return res.status(422).render("admin/add-post", {
+      pageTitle: "Add Post",
+      path: "/admin/add-post",
+      editing: false,
+      hasError: true,
+      post: {
+        title: title,
+        description: description
+      },
+      errorMessage: 'Attached file is not an image',
+      validationErrors: [],
+    });
+  }
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).render("admin/add-post", {
+      pageTitle: "Add Post",
+      path: "/admin/add-post",
+      editing: false,
+      hasError: true,
+      post: {
+        title: title,
+        description: description
+      },
+      errorMessage: 'Attached file is not an image',
+      validationErrors: [],
+    });
+  }
+const photoUrl = photo.path;
   const newPost = new Post({
     title: title,
-    image: photo,
+    image: photoUrl,
     description: description,
-    userId: req.user._id.toString(),
+    userId: req.user._id,
   });
   newPost
     .save()
@@ -39,6 +74,7 @@ exports.postNewPost = (req, res, next) => {
       error.httpStatusCode = 500;
       return next(error);
     });
+
 };
 
 exports.getEditPost = (req, res, next) => {
@@ -71,15 +107,10 @@ exports.getEditPost = (req, res, next) => {
 };
 
 exports.postEditPost = (req, res, next) => {
-    const postId = req.body.postId;
+  const postId = req.body.postId;
   const updatedTitle = req.body.title;
-  const updatedImg = req.body.photo;
+  const photo = req.file;
   const updatedDesc = req.body.description;
-/*   const user = req.session.user;
-  if (!user) {
-    // Handle the case where user is not authenticated or not available
-    return res.redirect("/login"); // For example, redirect to the login page
-  } */
 
   const errors = validationResult(req);
 
@@ -92,7 +123,6 @@ exports.postEditPost = (req, res, next) => {
       errorMessage: null,
       post: {
         title: updatedTitle,
-        photo: updatedImg,
         description: updatedDesc,
         _id: postId,
       },
@@ -103,16 +133,19 @@ exports.postEditPost = (req, res, next) => {
 
 
   Post.findById(postId)
-    .then((post) => {
+    .then(post => {
       post.title = updatedTitle;
-      post.image = updatedImg;
+      if(photo) {
+        fileHelper.deleteFile(post.image)
+        post.image = photo.path;
+      }
       post.description = updatedDesc;
-      return post.save();
-    })
-    .then((result) => {
-      console.log("Post Updated");
-      res.redirect("/news");
-    })
+
+      return post.save().then((result) => {
+        console.log("Post Updated");
+        res.redirect("/news");
+      })
+    })  
     .catch((err) => {
       console.log(err);
     });
@@ -120,6 +153,12 @@ exports.postEditPost = (req, res, next) => {
 
 exports.deletePost = (req, res, next) => {
     const postId = req.body.postId;
+    Post.findById(postId).then(post => {
+      if(!post) {
+        return next(new Error('PRODUCT NOT FOUND'));
+      }
+      fileHelper.deleteFile(post.image);
+    })
      Post.findByIdAndRemove(postId)
         .then( () => {        
             console.log("POST DELETED ==!!!===");
