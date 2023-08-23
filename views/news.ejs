@@ -19,29 +19,28 @@
     <div class="container">
       <div class="row w-100 m-0 justify-content-center gap-5">
        <% posts.forEach(post => {%>
-        <div class="col-lg-3 col-md-4 col-sm-10 p-0">
-          <div class="custom-media d-flex flex-column align-items-center">
         
+        <div class="col-lg-4 col-md-6 ">
+          <div class="post-entry">
+            <a href="/news/<%=post._id%>">   <img src="/<%= post.image %>" alt="Image" />  </a>          
+          </div>          
+            <div class="caption p-3 text-center">            
+                <a href="/latest-news/<%=post._id %>">
+                  <h3 class="mb-2"><%=post.title%></h3>
 
-              <a href="/news/<%=post._id%>"> <img src="/<%=post.image%>" alt="<%=post.title%>" class="img-fluid"></a>
-            
-            <div class="text">
-              <span class="meta"><%= new Date().toLocaleDateString() %></span>  
-              <p><%=post.description.substr(0,50)%> <a href="/news/<%=post._id%>" class="read-more" >Read more</a></p>
-              <div class="links ">         
-
-              <% if(isAuthenticated && isAdmin) {%>
-                <form action="/delete" class="delete d-flex justify-content-center" method="POST">
-                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                  <input type="hidden" value="<%= post._id %>" name="postId">
-                  <a href="admin/edit-post/<%=post._id%>?edit=true" class="edit-icon"><ion-icon name="create"></ion-icon></a>
-                  <button type="submit" class="delete-icon"><ion-icon name="trash" ></ion-icon></button>
-                </form>
-              <%}%>
-              </div>
-              
+                </a>     
+                <p><%=post.description.substr(0,50)%> <a href="/news/<%=post._id%>" class="read-more" >Read more</a></p>
+                <small><%= new Date().toLocaleDateString() %></small> 
+                <% if(isAuthenticated && isAdmin) {%>
+                  <form action="/delete" class="delete d-flex justify-content-center" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" value="<%= post._id %>" name="postId">
+                    <a href="admin/edit-post/<%=post._id%>?edit=true" class="edit-icon"><ion-icon name="create"></ion-icon></a>
+                    <button type="submit" class="delete-icon"><ion-icon name="trash" ></ion-icon></button>
+                  </form>
+                <%}%>         
             </div>
-          </div>
+            
         </div>
       <% })%>
 

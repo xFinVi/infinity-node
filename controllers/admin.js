@@ -85,7 +85,6 @@ exports.getEditPost = (req, res, next) => {
   const postId = req.params.postId;
   Post.findById(postId)
     .then((post) => {
-        console.log(post)
       if (!postId) {
         return res.redirect("/");
       }
