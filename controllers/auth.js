@@ -157,6 +157,7 @@ exports.postRegister = (req, res, next) => {
             name: name,
             email: email,
             password: hashedPassword,
+            isAdmin:true,
           });
           console.log("USER CREATED", user);
           return user.save();
