@@ -55,7 +55,7 @@ app.set("views", "views");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
-  multer({ storage: fileStorage, fileFilter: fileFilter }).single("photo")
+  multer({dest: 'Photos', storage: fileStorage, fileFilter: fileFilter }).single("photo")
 );
 
 
