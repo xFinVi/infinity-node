@@ -57,9 +57,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
 <<<<<<< HEAD
   multer({storage: fileStorage, fileFilter: fileFilter }).single("photo")
-=======
-  multer({dest: 'Photos', storage: fileStorage, fileFilter: fileFilter }).single("photo")
->>>>>>> f4aea3034af2172a174b2ff90688cf897a1fc2d8
 );
 
 
